@@ -41,8 +41,16 @@ display(df)
 
 # COMMAND ----------
 
+# This was added by me, fix on prod
+
+import pyspark.sql.functions as F
+
+df = df.withColumn("date", F.to_timestamp("date", "yyyy-MM-dd"))
+
+# COMMAND ----------
+
 # Write to Delta Lake
-df.write.mode('overwrite').saveAsTable('covid_stats')
+df.write.mode('overwrite').option('overwriteSchema',True).saveAsTable('covid_stats')
 
 # COMMAND ----------
 
