@@ -22,7 +22,7 @@ jobs:
 
           local-notebook-path: notebooks/run_unit_tests.py
 
-          existing-cluster-id: ivan_calvo_project_galaxy
+          existing-cluster-id: 0719-210547-a9fo0pu0
 
           git-commit: "${{ github.event.pull_request.head.sha }}"
 
