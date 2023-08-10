@@ -20,7 +20,7 @@ print(f'Data path: {data_path}')
 
 # COMMAND ----------
 
-from covid_analysis.transforms import *
+from libraries.transforms import *
 import pandas as pd
 
 df = pd.read_csv(data_path)
@@ -46,6 +46,20 @@ display(df)
 import pyspark.sql.functions as F
 
 df = df.withColumn("date", F.to_timestamp("date", "yyyy-MM-dd"))
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC
+# MAGIC #### Set the catalog and schema in Unity catalog before writting the table
+
+# COMMAND ----------
+
+CATALOG = "team_tuanis_catalog"
+SCHEMA = "dev_schema"
+
+spark.sql(f"USE CATALOG {CATALOG}")
+spark.sql(f"USE SCHEMA {SCHEMA}")
 
 # COMMAND ----------
 

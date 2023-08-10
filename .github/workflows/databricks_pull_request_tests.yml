@@ -5,7 +5,7 @@ on:
 
 env:
   # Replace this value with your workspace instance name.
-  DATABRICKS_HOST: https://e2-demo-west.cloud.databricks.com/
+  DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}
 
 jobs:
   unit-test-notebook:
@@ -18,11 +18,11 @@ jobs:
       - name: Run test notebook
         uses: databricks/run-notebook@main
         with:
-          databricks-token: dapiced5dacda637404b9ed2f8e085986cc8
+          databricks-token: ${{secrets.DATABRICKS_TOKEN}}
 
           local-notebook-path: notebooks/run_unit_tests.py
 
-          existing-cluster-id: 0719-210547-a9fo0pu0
+          existing-cluster-id: ${{secrets.CLUSTER_ID}}
 
           git-commit: "${{ github.event.pull_request.head.sha }}"
 
