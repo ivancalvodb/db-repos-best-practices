@@ -80,3 +80,5 @@ display(spark.table('covid_stats'))
 
 # Using python
 df.toPandas().plot(figsize=(13,6), grid=True).legend(loc='upper left');
+
+# adding extra code
