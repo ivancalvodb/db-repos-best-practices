@@ -65,20 +65,3 @@ spark.sql(f"USE SCHEMA {SCHEMA}")
 
 # Write to Delta Lake
 df.write.mode('overwrite').option('overwriteSchema',True).saveAsTable('covid_stats')
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC #### Visualize
-
-# COMMAND ----------
-
-# Using Databricks visualizations and data profiling
-display(spark.table('covid_stats'))
-
-# COMMAND ----------
-
-# Using python
-df.toPandas().plot(figsize=(13,6), grid=True).legend(loc='upper left');
-
-# adding extra code
